@@ -1,0 +1,1 @@
+ import someTempFunction from '../src/index.js';
