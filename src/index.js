@@ -3,8 +3,14 @@ import fs from 'fs';
 import  { readFileSync }  from 'fs';
 import _ from 'lodash';
 
+//  console.log(getFileData(file1));
+//   console.log(getFileData(file2));
+
 const makeAbsolutePath = (filepath) => path.isAbsolute(filepath) ? filepath : path.resolve(process.cwd(), filepath);
+
+
 const getFileData = (filepath) => {
+    // const absoluteFilePath = path.isAbsolute(filepath) ? filepath : path.resolve(filepath);
     const file = readFileSync(makeAbsolutePath(filepath), 'utf-8');
     return JSON.parse(file);
 }
@@ -20,7 +26,7 @@ const makeCompare = (file1, file2) => {
   const keys = _.sortBy(_.union(keys1, keys2));
 
   const result = keys
-    .map((key) => {
+      .map((key) => {
       if (fileData1[key] === fileData2[key]) {
         return `  ${key}: ${fileData1[key]}`;
       };
@@ -35,11 +41,11 @@ const makeCompare = (file1, file2) => {
       };
   });
 
-
-console.log('first file', getFileData(file1));
-console.log('second file', getFileData(file2));
+  console.log(getFileData(file1));
+  console.log(getFileData(file2));
 
   return result.join('\n');
 };
 
 export default makeCompare;
+
