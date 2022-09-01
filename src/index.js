@@ -25,9 +25,9 @@ const makeCompare = (file1, file2) => {
   const result = keys
     .map((key) => {
       if (fileData1[key] === fileData2[key]) {
-        return `  ${key}: ${fileData1[key]}`;
+        return `    ${key}: ${fileData1[key]}`;
       }
-      if (!fileData1[key]) {
+      if (!_.has(fileData1, key)) {
         return `  + ${key}: ${fileData2[key]}`;
       }
       if (!fileData2[key]) {
@@ -37,10 +37,10 @@ const makeCompare = (file1, file2) => {
       return `  - ${key}: ${fileData1[key]}\n  + ${key}: ${fileData2[key]}`;
     });
 
-  console.log(getFileData(file1));
-  console.log(getFileData(file2));
+  // console.log(getFileData(file1));
+  // console.log(getFileData(file2));
 
-  return result.join('\n');
+  return `{\n${result.join('\n')}\n}`;
 };
 
 export default makeCompare;
