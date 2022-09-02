@@ -1,7 +1,10 @@
 import { load } from 'js-yaml';
+import path from 'path';
 
-const getExtension = (data, format) => {
-  switch (format) {
+const getParsedFile = (data, filepath) => {
+  const getExtension = (pathToFile) => path.extname(pathToFile).slice(1);
+
+  switch (getExtension(filepath)) {
     case 'json':
       return JSON.parse(data);
     case 'yaml':
@@ -9,8 +12,8 @@ const getExtension = (data, format) => {
     case 'yml':
       return load(data);
     default:
-      throw new Error('Unknown fornmat.');
+      throw new Error('Unknown file fornmat.');
   }
 };
 
-export default getExtension;
+export default getParsedFile;

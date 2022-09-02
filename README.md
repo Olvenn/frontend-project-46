@@ -8,3 +8,6 @@
 
 ### Example for merging two json files:
 [![asciicast](https://asciinema.org/a/ZRRetVPNIlNQGrmCfjR14xtc7.png)](https://asciinema.org/a/ZRRetVPNIlNQGrmCfjR14xtc7)
+
+### Example for merging two json files and two yml files:
+[![asciicast](https://asciinema.org/a/BKPXzHQhvhjUf9aVydkmeeEfZ.png)](https://asciinema.org/a/BKPXzHQhvhjUf9aVydkmeeEfZ)

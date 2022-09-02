@@ -1,6 +1,7 @@
 import path from 'path';
 import { readFileSync } from 'fs';
 import _ from 'lodash';
+import getParsedFile from './parser.js';
 
 const makePath = (filepath) => {
   const makeAbsolutePath = (relativePath) => path.resolve(process.cwd(), relativePath);
@@ -9,13 +10,14 @@ const makePath = (filepath) => {
 
 const getFileData = (filepath) => {
   const file = readFileSync(makePath(filepath), 'utf-8');
-  return JSON.parse(file);
+  return file;
 };
 
-const makeCompare = (file1, file2) => {
-  // Получаем данные файлов
-  const fileData1 = getFileData(file1);
-  const fileData2 = getFileData(file2);
+const makeCompare = (filepath1, filepath2) => {
+  // Получаем данные файлов и проверяем является ли разбираемая строка правильным JSON или jml
+  const fileData1 = getParsedFile(getFileData(filepath1), filepath1);
+  const fileData2 = getParsedFile(getFileData(filepath2), filepath2);
+
   // Получаем ключи объектов
   const keys1 = Object.keys(fileData1);
   const keys2 = Object.keys(fileData2);
