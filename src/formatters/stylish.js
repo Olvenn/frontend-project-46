@@ -25,7 +25,7 @@ const getStylish = (tree) => {
   const iter = (node, depth) => {
     switch (node.type) {
       case 'nested':
-        // Рекурсивно обходим детей
+        // Рекурсивно обходим детей раскрывая вложенные стрктуры
         return `\n  ${getIndent(depth)}${node.key}: {${node.children.map((child) => iter(child, depth + 1)).join('')}\n${getIndent(depth)}  }`;
       case 'added':
         return `\n${getIndent(depth)}${add}${node.key}: ${stringify(node.addedValue, depth + 1)}`;
