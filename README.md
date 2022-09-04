@@ -14,3 +14,6 @@
 
 ### Example for merging two json nested files files:
 [![asciicast](https://asciinema.org/a/qsd0UsxVj0UIF3mpErZOPdB4Y.png)](https://asciinema.org/a/qsd0UsxVj0UIF3mpErZOPdB4Y)
+
+### Example for merging two json files files with plain and stylish format:
+[![asciicast](https://asciinema.org/a/uppiq80XWSsr7aPQ2rEmNG3o3.png)](https://asciinema.org/a/uppiq80XWSsr7aPQ2rEmNG3o3)
