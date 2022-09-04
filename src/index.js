@@ -20,7 +20,8 @@ const makeCompare = (filepath1, filepath2) => {
   // Получаем данные файлов и проверяем является ли разбираемая строка правильным JSON или jml
   const fileData1 = getParsedFile(getFileData(filepath1), filepath1);
   const fileData2 = getParsedFile(getFileData(filepath2), filepath2);
-
+  console.log(fileData1);
+  console.log(fileData2);
   // Создаем дерево (массив) объектов для нахождение различий в файлах,
   // в т.ч. имеющих вложенные структуры.
   const tree = makeTree(fileData1, fileData2);

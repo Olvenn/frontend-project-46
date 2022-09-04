@@ -11,3 +11,6 @@
 
 ### Example for merging two json files and two yml files:
 [![asciicast](https://asciinema.org/a/BKPXzHQhvhjUf9aVydkmeeEfZ.png)](https://asciinema.org/a/BKPXzHQhvhjUf9aVydkmeeEfZ)
+
+### Example for merging two json nested files files:
+[![asciicast](https://asciinema.org/a/qsd0UsxVj0UIF3mpErZOPdB4Y.png)](https://asciinema.org/a/qsd0UsxVj0UIF3mpErZOPdB4Y)

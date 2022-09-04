@@ -12,6 +12,7 @@ program
   .action((filepath1, filepath2) => {
     console.log(makeCompare(filepath1, filepath2));
   })
-  .option('-f, --format <type>', 'output format');
+  // Добавьте текущий форматер 'stylish' как форматер по умолчанию для библиотеки.
+  .option('-f, --format <type>', 'output format', 'stylish');
 
 program.parse();
