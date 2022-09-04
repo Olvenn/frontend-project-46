@@ -1,6 +1,5 @@
 import path from 'path';
 import { readFileSync } from 'fs';
-import _ from 'lodash';
 import getParsedFile from './parser.js';
 
 import makeTree from './makeDiffTree.js';
