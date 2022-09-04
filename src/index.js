@@ -1,4 +1,4 @@
-import path from 'path';
+import path, { format } from 'path';
 import { readFileSync } from 'fs';
 import getParsedFile from './parser.js';
 
@@ -15,7 +15,7 @@ const getFileData = (filepath) => {
   return file;
 };
 
-const makeCompare = (filepath1, filepath2) => {
+const makeCompare = (filepath1, filepath2, typeFormat) => {
   // Получаем данные файлов и проверяем является ли разбираемая строка правильным JSON или jml
   const fileData1 = getParsedFile(getFileData(filepath1), filepath1);
   const fileData2 = getParsedFile(getFileData(filepath2), filepath2);
@@ -32,7 +32,16 @@ const makeCompare = (filepath1, filepath2) => {
     return `{${result.join('')}\n}`;
   };
 
-  return getResult(tree);
+  const chooseFormat = (data, typeFormat) => {
+    switch (typeFormat) {
+      case 'stylish':
+        return getResult(data);
+      default:
+        throw new Error(`Unknown file type ${format}`);
+    }
+  };
+
+  return chooseFormat(tree, typeFormat);
 };
 
 export default makeCompare;
