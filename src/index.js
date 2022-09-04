@@ -21,39 +21,18 @@ const makeCompare = (filepath1, filepath2) => {
   const fileData1 = getParsedFile(getFileData(filepath1), filepath1);
   const fileData2 = getParsedFile(getFileData(filepath2), filepath2);
 
+  // Создаем дерево (массив) объектов для нахождение различий в файлах,
+  // в т.ч. имеющих вложенные структуры.
   const tree = makeTree(fileData1, fileData2);
 
-  console.log(getStylish(tree));
+  // Получаем файл сравнения проходя по всем детям дерева рекурсивно.
+  // Меняя элементы массива на соответствующие им строки
+  const getResult = (diffTree) => {
+    const result = diffTree.map((nodes) => getStylish(nodes));
+    return `{${result.join('')}\n}`;
+  };
 
-  // Получаем ключи объектов
-  const keys1 = Object.keys(fileData1);
-  const keys2 = Object.keys(fileData2);
-
-  const keys = _.sortBy(_.union(keys1, keys2));
-
-  const indent = '  ';
-  const add = '+ ';
-  const remove = '- ';
-
-  const result = keys
-    .map((key) => {
-      if (fileData1[key] === fileData2[key]) {
-        return `${indent}${indent}${key}: ${fileData1[key]}`;
-      }
-      if (!_.has(fileData1, key)) {
-        return `${indent}${add}${key}: ${fileData2[key]}`;
-      }
-      if (!fileData2[key]) {
-        return `${indent}${remove}${key}: ${fileData1[key]}`;
-      }
-
-      return `${indent}${remove}${key}: ${fileData1[key]}\n${indent}${add}${key}: ${fileData2[key]}`;
-    });
-
-  // console.log(getFileData(file1));
-  // console.log(getFileData(file2));
-
-  return `{\n${result.join('\n')}\n}`;
+  return getResult(tree);
 };
 
 export default makeCompare;
