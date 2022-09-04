@@ -21,7 +21,7 @@ const getResult = (data, typeFormat) => {
     case 'plain':
       return makePlainResult(data);
     default:
-      throw new Error(`Unknown file type ${typeFormat}`);
+      throw new Error('Unknown file type.');
   }
 };
 
