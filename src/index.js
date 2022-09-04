@@ -1,9 +1,11 @@
-import path, { format } from 'path';
+import path from 'path';
 import { readFileSync } from 'fs';
 import getParsedFile from './parser.js';
 
 import makeTree from './makeDiffTree.js';
-import getStylish from './formatters/stylish.js';
+
+// import getStylish from './formatters/stylish.js';
+import getResult from './formatters/index.js';
 
 const makePath = (filepath) => {
   const makeAbsolutePath = (relativePath) => path.resolve(process.cwd(), relativePath);
@@ -25,23 +27,7 @@ const makeCompare = (filepath1, filepath2, typeFormat) => {
   // в т.ч. имеющих вложенные структуры.
   const tree = makeTree(fileData1, fileData2);
 
-  // Получаем файл сравнения проходя по всем детям дерева рекурсивно.
-  // Меняя элементы массива на соответствующие им строки
-  const getResult = (diffTree) => {
-    const result = diffTree.map((nodes) => getStylish(nodes));
-    return `{${result.join('')}\n}`;
-  };
-
-  const chooseFormat = (data, typeFormat) => {
-    switch (typeFormat) {
-      case 'stylish':
-        return getResult(data);
-      default:
-        throw new Error(`Unknown file type ${format}`);
-    }
-  };
-
-  return chooseFormat(tree, typeFormat);
+  return getResult(tree, typeFormat);
 };
 
 export default makeCompare;
