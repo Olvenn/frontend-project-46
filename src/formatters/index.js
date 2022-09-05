@@ -14,12 +14,17 @@ const makePlainResult = (diffTree) => {
   return `${result.join('').trim()}`;
 };
 
+// Вывод в структурированном формате json
+const makeJsonResult = (diffTree) => JSON.stringify(diffTree);
+
 const getResult = (data, typeFormat) => {
   switch (typeFormat) {
     case 'stylish':
       return makeStylishResult(data);
     case 'plain':
       return makePlainResult(data);
+    case 'json':
+      return makeJsonResult(data);
     default:
       throw new Error('Unknown file type.');
   }

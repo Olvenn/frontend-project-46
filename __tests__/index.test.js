@@ -12,6 +12,7 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 const result = readFile('resultJson.txt');
 const resultNested = readFile('expected.txt');
 const resultPlain = readFile('plain.txt');
+const resultJson = readFile('jsonResult.txt');
 
 test('check makeCompare with json files', () => {
   const filePath1 = getFixturePath('file-plain1.json');
@@ -46,4 +47,11 @@ test('check makeCompare with nested yml files', () => {
   const filePath2 = getFixturePath('file2.yml');
   expect(makeCompare(filePath1, filePath2, 'plain')).toEqual(resultPlain);
   expect(typeof makeCompare(filePath1, filePath2, 'plain')).toBe('string');
+});
+
+test('check makeCompare with nested yml files', () => {
+  const filePath1 = getFixturePath('file1.json');
+  const filePath2 = getFixturePath('file2.json');
+  expect(makeCompare(filePath1, filePath2, 'json')).toEqual(resultJson);
+  expect(typeof makeCompare(filePath1, filePath2, 'json')).toBe('string');
 });
