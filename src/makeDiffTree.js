@@ -1,7 +1,5 @@
 import _ from 'lodash';
 
-// Реализуйте нахождение различий для файлов, имеющих вложенные структуры.
-// Создаем объект с ключами, типом и если есть детьми по общим ключам двух файлов
 const makeTree = (file1, file2) => {
   const keys1 = Object.keys(file1);
   const keys2 = Object.keys(file2);
