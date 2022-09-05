@@ -9,49 +9,27 @@ const __dirname = path.dirname(__filename);
 
 const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
 const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
-const result = readFile('resultJson.txt');
-const resultNested = readFile('expected.txt');
-const resultPlain = readFile('plain.txt');
-const resultJson = readFile('jsonResult.txt');
+const resultNested = readFile('stylishResult.txt');
 
-test('check makeCompare with json files', () => {
-  const filePath1 = getFixturePath('file-plain1.json');
-  const filePath2 = getFixturePath('file-plain2.json');
-  expect(makeCompare(filePath1, filePath2, 'stylish')).toEqual(result);
-  expect(typeof makeCompare(filePath1, filePath2, 'stylish')).toBe('string');
-});
+const testCases = [
+  ['file1.json', 'file2.json', 'stylishResult.txt', 'stylish'],
+  ['file1.yml', 'file2.yml', 'stylishResult.txt', 'stylish'],
+  ['file1.json', 'file2.json', 'plainResult.txt', 'plain'],
+  ['file1.yml', 'file2.yml', 'plainResult.txt', 'plain'],
+  ['file1.json', 'file2.json', 'jsonResult.txt', 'json'],
+  ['file1.yml', 'file2.yml', 'jsonResult.txt', 'json'],
+];
 
-test('check makeCompare with nested json files', () => {
+test('If the format is not specified, get result with formater stylish.', () => {
   const filePath1 = getFixturePath('file1.json');
   const filePath2 = getFixturePath('file2.json');
-  expect(makeCompare(filePath1, filePath2, 'stylish')).toEqual(resultNested);
-  expect(typeof makeCompare(filePath1, filePath2, 'stylish')).toBe('string');
+  expect(makeCompare(filePath1, filePath2)).toEqual(resultNested);
+  expect(typeof makeCompare(filePath1, filePath2)).toBe('string');
 });
 
-test('check makeCompare with nested json files', () => {
-  const filePath1 = getFixturePath('file1.yml');
-  const filePath2 = getFixturePath('file2.yml');
-  expect(makeCompare(filePath1, filePath2, 'stylish')).toEqual(resultNested);
-  expect(typeof makeCompare(filePath1, filePath2, 'stylish')).toBe('string');
-});
-
-test('check makeCompare with nested json files', () => {
-  const filePath1 = getFixturePath('file1.json');
-  const filePath2 = getFixturePath('file2.json');
-  expect(makeCompare(filePath1, filePath2, 'plain')).toEqual(resultPlain);
-  expect(typeof makeCompare(filePath1, filePath2, 'plain')).toBe('string');
-});
-
-test('check makeCompare with nested yml files', () => {
-  const filePath1 = getFixturePath('file1.yml');
-  const filePath2 = getFixturePath('file2.yml');
-  expect(makeCompare(filePath1, filePath2, 'plain')).toEqual(resultPlain);
-  expect(typeof makeCompare(filePath1, filePath2, 'plain')).toBe('string');
-});
-
-test('check makeCompare with nested yml files', () => {
-  const filePath1 = getFixturePath('file1.json');
-  const filePath2 = getFixturePath('file2.json');
-  expect(makeCompare(filePath1, filePath2, 'json')).toEqual(resultJson);
-  expect(typeof makeCompare(filePath1, filePath2, 'json')).toBe('string');
+test.each(testCases)('Check the program in all possible file ormats', (file1, file2, resultFile, formatter) => {
+  const result1 = readFile(resultFile);
+  const filePath1 = getFixturePath(file1);
+  const filePath2 = getFixturePath(file2);
+  expect(makeCompare(filePath1, filePath2, formatter)).toEqual(result1);
 });

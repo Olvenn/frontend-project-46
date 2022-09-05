@@ -17,7 +17,7 @@ const makePlainResult = (diffTree) => {
 // Вывод в структурированном формате json
 const makeJsonResult = (diffTree) => JSON.stringify(diffTree);
 
-const getResult = (data, typeFormat) => {
+const getResult = (data, typeFormat = 'stylish') => {
   switch (typeFormat) {
     case 'stylish':
       return makeStylishResult(data);
