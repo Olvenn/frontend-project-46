@@ -31,6 +31,8 @@ NodeJS version: not lower 14.
 <a href="https://codeclimate.com/github/Olvenn/frontend-project-46/maintainability"><img src="https://api.codeclimate.com/v1/badges/a0bbb4ffa8cfdec76566/maintainability" /></a>
 <a href="https://codeclimate.com/github/Olvenn/frontend-project-46/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a0bbb4ffa8cfdec76566/test_coverage" /></a>
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/a0bbb4ffa8cfdec76566/maintainability)](https://codeclimate.com/github/Olvenn/frontend-project-46/maintainability)
+
 ## Demonstrations
 
 ### Example for merging two json files:
