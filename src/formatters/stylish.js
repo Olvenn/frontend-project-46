@@ -12,8 +12,8 @@ const stringify = (value, depth) => {
   const keys = Object.keys(value);
   // Если объект рекурсивно перебираем и переводим в строку
   const result = keys.map((key) => {
-    const childValue = value[key];
-    return `${getIndent(depth)}  ${key}: ${stringify(childValue, depth + 1)}\n`;
+    const nodeValue = value[key];
+    return `${getIndent(depth)}  ${key}: ${stringify(nodeValue, depth + 1)}\n`;
   });
   return `{\n${result.join('')}${getIndent(depth - 1)}  }`;
 };
