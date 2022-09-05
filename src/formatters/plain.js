@@ -5,7 +5,7 @@ const stringify = (value) => {
     return '[complex value]';
   }
 
-  return typeof value === 'string' ? `${value}` : value;
+  return typeof value === 'string' ? `'${value}'` : value;
 };
 
 const getPlain = (tree) => {
@@ -17,7 +17,8 @@ const getPlain = (tree) => {
       case 'added':
         return `Property '${keysPath}' was ${node.type} with value: ${stringify(node.addedValue)}\n`;
       case 'removed':
-        return `Property '${keysPath}' was ${node.removedValue}\n`;
+        return `Property '${keysPath}' was ${node.type}\n`;
+        // return `Property '${keysPath}' was ${node.removedValue}\n`;
       case 'changed':
         return `Property '${keysPath}' was updated. From ${stringify(node.removedValue)} to ${stringify(node.addedValue)}\n`;
       case 'unchanged':

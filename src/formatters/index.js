@@ -11,7 +11,7 @@ const makeStylishResult = (diffTree) => {
 // Меняя элементы массива на соответствующие им выражение
 const makePlainResult = (diffTree) => {
   const result = diffTree.map((nodes) => getPlain(nodes));
-  return `{\n${result.join('')}}`;
+  return `${result.join('').trim()}`;
 };
 
 const getResult = (data, typeFormat) => {
