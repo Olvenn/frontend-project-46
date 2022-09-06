@@ -30,7 +30,7 @@ const makeTree = (file1, file2) => {
         removedValue: value1,
       };
     }
-    if (_.has(file1, key) && _.has(file2, key) && (value1 !== value2)) {
+    if (_.has(file1, key) && _.has(file2, key) && !_.isEqual(value1, value2)) {
       return {
         key,
         type: 'changed',
