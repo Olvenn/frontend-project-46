@@ -1,4 +1,3 @@
-// import { load } from 'js-yaml';
 import yaml from 'js-yaml';
 
 const getParsedFile = (data, format) => {

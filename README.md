@@ -1,3 +1,9 @@
+### Hexlet tests and linter status:
+[![Actions Status](https://github.com/Olvenn/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Olvenn/frontend-project-46/actions)
+[![Node.js CI](https://github.com/Olvenn/frontend-project-46/actions/workflows/node.js.yml/badge.svg)](https://github.com/Olvenn/frontend-project-46/actions/workflows/node.js.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a0bbb4ffa8cfdec76566/maintainability)](https://codeclimate.com/github/Olvenn/frontend-project-46/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a0bbb4ffa8cfdec76566/test_coverage)](https://codeclimate.com/github/Olvenn/frontend-project-46/test_coverage)
+
 ## Сalculator files data difference 
 
 The program is designed to generate differences between data from two files.
@@ -9,7 +15,7 @@ finds differences for files with nested structures by making a tree of differenc
 
 #### Supports file formats: json, yaml.
 
-#### Supports options for stule of the result: stylish, plain and json.
+#### Supports options (generating data in formats): stylish, plain and json.
 
 ## Installation:
 
@@ -22,14 +28,11 @@ NodeJS version: not lower 14.
 3. Installing the project:
    npm link
 4. To run:  gendiff [-f option] <path to file1> <path to file2>.
+   
 
-#### For help run gendiff -h or gendiff --help.
+#### For help run:  gendiff -h or gendiff --help
 
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/Olvenn/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Olvenn/frontend-project-46/actions)
-[![Node.js CI](https://github.com/Olvenn/frontend-project-46/actions/workflows/node.js.yml/badge.svg)](https://github.com/Olvenn/frontend-project-46/actions/workflows/node.js.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/a0bbb4ffa8cfdec76566/maintainability)](https://codeclimate.com/github/Olvenn/frontend-project-46/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a0bbb4ffa8cfdec76566/test_coverage)](https://codeclimate.com/github/Olvenn/frontend-project-46/test_coverage)
+#### For running tests:  make test
 
 ## Demonstrations
 
