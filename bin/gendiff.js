@@ -14,4 +14,4 @@ program
     console.log(makeCompare(filepath1, filepath2, program.opts().format));
   });
 
-program.parse(process.argv);
+program.parse();
