@@ -11,10 +11,7 @@ const makePath = (filepath) => {
   return path.isAbsolute(filepath) ? filepath : makeAbsolutePath(filepath);
 };
 
-const getFileData = (filepath) => {
-  const file = readFileSync(makePath(filepath), 'utf-8');
-  return file;
-};
+const getFileData = (filepath) => readFileSync(makePath(filepath), 'utf-8');
 
 const makeCompare = (filepath1, filepath2, typeFormat) => {
   const fileData1 = getParsedFile(getFileData(filepath1), filepath1);
