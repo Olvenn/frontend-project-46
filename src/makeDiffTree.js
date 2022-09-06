@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const makeTree = (fileData1, fileData2) => {
+const makeСhildren = (fileData1, fileData2) => {
   const keys1 = Object.keys(fileData1);
   const keys2 = Object.keys(fileData2);
   const keys = _.sortBy(_.union(keys1, keys2));
@@ -13,7 +13,7 @@ const makeTree = (fileData1, fileData2) => {
       return {
         key,
         type: 'nested',
-        children: makeTree(value1, value2),
+        children: makeСhildren(value1, value2),
       };
     }
     if (!_.has(fileData1, key)) {
@@ -44,7 +44,10 @@ const makeTree = (fileData1, fileData2) => {
       unchangedValue: value1,
     };
   });
+
   return tree;
 };
+
+const makeTree = (fileData1, fileData2) => ({ type: 'root', children: makeСhildren(fileData1, fileData2) });
 
 export default makeTree;

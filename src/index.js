@@ -14,13 +14,11 @@ const getFileData = (filepath) => readFileSync(makePath(filepath), 'utf-8');
 
 const makeCompare = (filepath1, filepath2, typeFormat) => {
   const getExtension = (pathToFile) => path.extname(pathToFile).slice(1);
-
   const fileData1 = getParsedFile(getFileData(filepath1), getExtension(filepath1));
   const fileData2 = getParsedFile(getFileData(filepath2), getExtension(filepath2));
-
   const tree = makeTree(fileData1, fileData2);
 
-  return getResult(tree, typeFormat);
+  return getResult(tree.children, typeFormat);
 };
 
 export default makeCompare;
