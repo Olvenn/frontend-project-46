@@ -1,11 +1,7 @@
 import { load } from 'js-yaml';
-import path from 'path';
 
-// Проверяем файлы на коорректность содержимого
-const getParsedFile = (data, filepath) => {
-  const getExtension = (pathToFile) => path.extname(pathToFile).slice(1);
-
-  switch (getExtension(filepath)) {
+const getParsedFile = (data, format) => {
+  switch (format) {
     case 'json':
       return JSON.parse(data);
     case 'yaml':
