@@ -29,4 +29,9 @@ const getPlain = (tree) => {
   return `${iter(tree)}`;
 };
 
-export default getPlain;
+const makePlainResult = (diffTree) => {
+  const result = diffTree.map((nodes) => getPlain(nodes));
+  return `${result.join('').trim()}`;
+};
+
+export default makePlainResult;

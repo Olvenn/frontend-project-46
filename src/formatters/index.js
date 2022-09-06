@@ -1,19 +1,19 @@
-import getStylish from './stylish.js';
-import getPlain from './plain.js';
+import makeStylishResult from './stylish.js';
+import makePlainResult from './plain.js';
 
-const makeStylishResult = (diffTree) => {
-  const result = diffTree.map((nodes) => getStylish(nodes));
-  return `{${result.join('')}\n}`;
-};
+// const makeStylishResult = (diffTree) => {
+//   const result = diffTree.map((nodes) => getStylish(nodes));
+//   return `{${result.join('')}\n}`;
+// };
 
-const makePlainResult = (diffTree) => {
-  const result = diffTree.map((nodes) => getPlain(nodes));
-  return `${result.join('').trim()}`;
-};
+// const makePlainResult = (diffTree) => {
+//   const result = diffTree.map((nodes) => getPlain(nodes));
+//   return `${result.join('').trim()}`;
+// };
 
 const makeJsonResult = (diffTree) => JSON.stringify(diffTree);
 
-const getResult = (data, typeFormat = 'stylish') => {
+const getResult = (data, typeFormat) => {
   switch (typeFormat) {
     case 'stylish':
       return makeStylishResult(data);

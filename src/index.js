@@ -12,7 +12,7 @@ const makePath = (filepath) => {
 
 const getFileData = (filepath) => readFileSync(makePath(filepath), 'utf-8');
 
-const makeCompare = (filepath1, filepath2, typeFormat) => {
+const makeCompare = (filepath1, filepath2, typeFormat = 'stylish') => {
   const getExtension = (pathToFile) => path.extname(pathToFile).slice(1);
   const fileData1 = getParsedFile(getFileData(filepath1), getExtension(filepath1));
   const fileData2 = getParsedFile(getFileData(filepath2), getExtension(filepath2));

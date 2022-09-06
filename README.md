@@ -7,9 +7,9 @@ The program has a command-line interface (CLI).
 The program reads the contents of two files; checks the data using a parser;
 finds differences for files with nested structures by making a tree of differences; Based on the resulting tree, it generates a text that outputs to the console.
 
-# Supports file formats: json, yaml.
+#### Supports file formats: json, yaml.
 
-# Supports options for stule of the result: stylish, plain and json.
+#### Supports options for stule of the result: stylish, plain and json.
 
 ## Installation:
 
@@ -23,7 +23,7 @@ NodeJS version: not lower 14.
    npm link
 4. To run:  gendiff [-f option] <path to file1> <path to file2>.
 
-# For help run gendiff -h or gendiff --help.
+#### For help run gendiff -h or gendiff --help.
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Olvenn/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Olvenn/frontend-project-46/actions)

@@ -39,4 +39,9 @@ const getStylish = (tree) => {
   return `${iter(tree, 1)}`;
 };
 
-export default getStylish;
+const makeStylishResult = (diffTree) => {
+  const result = diffTree.map((nodes) => getStylish(nodes));
+  return `{${result.join('')}\n}`;
+};
+
+export default makeStylishResult;
