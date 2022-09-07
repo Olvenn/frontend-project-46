@@ -22,6 +22,8 @@ const getPlain = (tree) => {
         return `Property '${keysPath}' was updated. From ${stringify(node.removedValue)} to ${stringify(node.addedValue)}\n`;
       case 'unchanged':
         return '';
+      case null:
+        return '';
       default:
         throw new Error(`Unknown file type ${node.type}`);
     }

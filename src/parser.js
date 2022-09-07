@@ -1,16 +1,16 @@
 import yaml from 'js-yaml';
 
-const getParsedFile = (data, format) => {
-  switch (format) {
-    case 'json':
-      return JSON.parse(data);
-    case 'yaml':
-      return yaml.load(data);
-    case 'yml':
-      return yaml.load(data);
-    default:
-      throw new Error('Unknown file fornmat.');
-  }
+const mapping = {
+  json: JSON.parse,
+  yml: yaml.load,
+  yaml: yaml.load,
 };
 
-export default getParsedFile;
+const getParser = (type) => {
+  if (!(type in mapping)) {
+    throw new Error('Unknown file fornmat.');
+  }
+  return mapping[type];
+};
+
+export default getParser;
