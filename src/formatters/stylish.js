@@ -20,7 +20,6 @@ const getStylish = (tree) => {
   const remove = '- ';
 
   const iter = (node, depth) => {
-    console.log(node);
     switch (node.type) {
       case 'root':
         return `{${node.children.map((child) => iter(child, 1)).join('')}\n}`;
