@@ -32,7 +32,6 @@ const getPlain = (tree) => {
 };
 
 const makePlainResult = (diffTree) => {
-  console.log('diffTree', diffTree);
   const result = getPlain(diffTree);
   return result;
 };

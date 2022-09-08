@@ -39,7 +39,6 @@ const getStylish = (tree) => {
   return `${iter(tree, 1)}`;
 };
 const makeStylishResult = (diffTree) => {
-  console.log('diffTree', diffTree);
   const result = getStylish(diffTree);
   return result;
 };
