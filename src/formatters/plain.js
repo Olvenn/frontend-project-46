@@ -12,6 +12,8 @@ const getPlain = (tree) => {
   const iter = (node, name = '') => {
     const keysPath = `${name}${node.key}`;
     switch (node.type) {
+      case 'root':
+        return `${node.children.map((child) => iter(child, '')).join('').trim()}`;
       case 'nested':
         return node.children.map((child) => iter(child, `${keysPath}.`)).join('');
       case 'added':
@@ -22,8 +24,6 @@ const getPlain = (tree) => {
         return `Property '${keysPath}' was updated. From ${stringify(node.removedValue)} to ${stringify(node.addedValue)}\n`;
       case 'unchanged':
         return '';
-      case null:
-        return '';
       default:
         throw new Error(`Unknown file type ${node.type}`);
     }
@@ -32,8 +32,9 @@ const getPlain = (tree) => {
 };
 
 const makePlainResult = (diffTree) => {
-  const result = diffTree.map((nodes) => getPlain(nodes));
-  return `${result.join('').trim()}`;
+  console.log('diffTree', diffTree);
+  const result = getPlain(diffTree);
+  return result;
 };
 
 export default makePlainResult;

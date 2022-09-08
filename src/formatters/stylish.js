@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
-const spacesCount = 4;
-const getIndent = (currentDepth) => ' '.repeat(currentDepth * spacesCount - 2);
+const getIndent = (currentDepth, spacesCount = 4) => ' '.repeat(currentDepth * spacesCount - 2);
 
 const stringify = (value, depth) => {
   if (!_.isPlainObject(value)) {
@@ -21,7 +20,10 @@ const getStylish = (tree) => {
   const remove = '- ';
 
   const iter = (node, depth) => {
+    console.log(node);
     switch (node.type) {
+      case 'root':
+        return `{${node.children.map((child) => iter(child, 1)).join('')}\n}`;
       case 'nested':
         return `\n  ${getIndent(depth)}${node.key}: {${node.children.map((child) => iter(child, depth + 1)).join('')}\n${getIndent(depth)}  }`;
       case 'added':
@@ -30,18 +32,16 @@ const getStylish = (tree) => {
         return `\n${getIndent(depth)}${remove}${node.key}: ${stringify(node.removedValue, depth + 1)}`;
       case 'changed':
         return `\n${getIndent(depth)}${remove}${node.key}: ${stringify(node.removedValue, depth + 1)}\n${getIndent(depth)}${add}${node.key}: ${stringify(node.addedValue, depth + 1)}`;
-      case 'unchanged':
-        return `\n${getIndent(depth)}  ${node.key}: ${stringify(node.unchangedValue, depth + 1)}`;
       default:
-        throw new Error(`Unknown file type ${node.type}`);
+        return `\n${getIndent(depth)}  ${node.key}: ${stringify(node.unchangedValue, depth + 1)}`;
     }
   };
   return `${iter(tree, 1)}`;
 };
-
 const makeStylishResult = (diffTree) => {
-  const result = diffTree.map((nodes) => getStylish(nodes));
-  return `{${result.join('')}\n}`;
+  console.log('diffTree', diffTree);
+  const result = getStylish(diffTree);
+  return result;
 };
 
 export default makeStylishResult;

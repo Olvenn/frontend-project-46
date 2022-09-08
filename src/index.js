@@ -20,7 +20,7 @@ const makeCompare = (filepath1, filepath2, typeFormat = 'stylish') => {
   const fileData2 = getParser(extension2)(getFileData(filepath2));
   const tree = makeTree(fileData1, fileData2);
 
-  return getResult(typeFormat)(tree.children);
+  return getResult(typeFormat)(tree);
 };
 
 export default makeCompare;
